@@ -78,7 +78,6 @@ block/USBD:
       description: endpoint 0 DMA buffer address.
       byte_offset: 0x1C
       bit_size: 32
-      fieldset: EP_DMA
     - name: EP_RX_DMA
       description: endpoint n (n=1-15) DMA RX buffer address.
       byte_offset: 0x20
@@ -86,7 +85,6 @@ block/USBD:
       array:
         len: 15
         stride: 4
-      fieldset: EP_DMA
     - name: EP_TX_DMA
       description: endpoint n (n=1-15) DMA TX buffer address.
       byte_offset: 0x5C
@@ -94,7 +92,6 @@ block/USBD:
       array:
         len: 15
         stride: 4
-      fieldset: EP_DMA
     - name: EP_MAX_LEN
       description: endpoint n (n=0-15) max acceptable length.
       byte_offset: 0x98
@@ -149,12 +146,10 @@ block/USBH:
       description: USB host receive buffer start address
       byte_offset: 0x24
       bit_size: 32
-      fieldset: EP_DMA
     - name: TX_DMA
       description: USB host transmit buffer start address
       byte_offset: 0x28
       bit_size: 32
-      fieldset: EP_DMA
     - name: RX_MAX_LEN
       description: USB host receive maximum length packet register
       byte_offset: 0xA0
@@ -626,14 +621,6 @@ fieldset/UH_SPLIT_DATA:
       bit_size: 12
 
 # shared
-fieldset/EP_DMA:
-  description: USB endpoint DMA buffer address.
-  bit_size: 32
-  fields:
-    - name: ADDR
-      description: USB endpoint DMA buffer address. 4byte aligned.
-      bit_offset: 0
-      bit_size: 17
 fieldset/EP_LEN:
   description: endpoint n acceptable length.
   bit_size: 16
